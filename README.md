@@ -9,24 +9,88 @@ A fun interactive game where the computer selects a random number and the player
 - Game statistics tracking
 - Command-line arguments for customization
 - Comprehensive error handling
+- Logging system for debugging
+- Modular code architecture
+
+## Screenshots
+
+```
+===== NUMBER GUESSING GAME =====
+
+I'm thinking of a number between 1 and 100.
+You have 7 attempts to guess it.
+
+Attempt 1/7. Enter your guess: 50
+Too low!
+You have 6 attempts remaining.
+Attempt 2/7. Enter your guess: 75
+Too high!
+You have 5 attempts remaining.
+Attempt 3/7. Enter your guess: 62
+Too low!
+You have 4 attempts remaining.
+Attempt 4/7. Enter your guess: 68
+Too high!
+You have 3 attempts remaining.
+Attempt 5/7. Enter your guess: 65
+Too high!
+You have 2 attempts remaining.
+Attempt 6/7. Enter your guess: 63
+Too low!
+You have 1 attempts remaining.
+Attempt 7/7. Enter your guess: 64
+
+Congratulations! You guessed the number 64 in 7 attempts!
+
+Game Statistics:
+Games Played: 1
+Wins: 1
+Losses: 0
+Win Rate: 100.0%
+
+Would you like to play again? (y/n): n
+
+Thanks for playing Number Guessing Game!
+```
 
 ## Installation
 
-No installation required beyond Python 3.6+. The script uses only standard library modules.
+### Requirements
 
-```bash
-# Clone the repository
-git clone https://github.com/arminmarth/number-guessing-game.git
-cd number-guessing-game
+- Python 3.8 or higher
 
-# Make the script executable (optional)
-chmod +x number_guessing_game.py
-```
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/arminmarth/number-guessing-game.git
+   cd number-guessing-game
+   ```
+
+2. Create and activate a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   
+   # On Windows
+   venv\Scripts\activate
+   
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
+### Basic Usage
+
+Run the game with default settings (medium difficulty):
+
 ```bash
-python number_guessing_game.py [options]
+python main.py
 ```
 
 ### Command Line Options
@@ -47,36 +111,59 @@ python number_guessing_game.py [options]
 
 ### Examples
 
-Play with default settings (medium difficulty):
-```bash
-python number_guessing_game.py
-```
-
 Play on easy difficulty:
 ```bash
-python number_guessing_game.py --difficulty easy
+python main.py --difficulty easy
 ```
 
 Show instructions before playing:
 ```bash
-python number_guessing_game.py --instructions
+python main.py --instructions
 ```
 
-## How to Play
+Play on hard difficulty:
+```bash
+python main.py --difficulty hard
+```
 
-1. The computer will select a random number within a range based on the difficulty level
-2. You need to guess that number within the allowed attempts
-3. After each guess, you'll get feedback (too high/too low)
-4. Type 'q', 'quit', or 'exit' at any time to end the current game
-5. After each game, you'll see your statistics and can choose to play again
+## Project Structure
 
-## Game Rules
+- `main.py` - Application entry point
+- `src/` - Source code directory
+  - `game/` - Game-related modules
+    - `game_controller.py` - Controls game flow
+    - `game_logic.py` - Core game mechanics
+    - `game_ui.py` - User interface
+  - `utils/` - Utility modules
+    - `config.py` - Configuration settings
+- `tests/` - Unit tests
+- `requirements.txt` - Python dependencies
+- `LICENSE` - MIT License
 
-- You must enter a valid number within the specified range
-- Each guess counts as an attempt
-- You win if you guess the correct number within the allowed attempts
-- You lose if you use all attempts without guessing correctly
+## Development
+
+### Running Tests
+
+Run all tests:
+```bash
+pytest
+```
+
+Run tests with coverage report:
+```bash
+pytest --cov=src
+```
+
+### Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the [MIT License](LICENSE).
